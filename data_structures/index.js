@@ -33,52 +33,63 @@ console.log(map);
 const set = new Set();
 set.add("John");
 set.add(30);
-set.add(30)
+set.add(30);
 
 
 console.log(set);
 
 //* === Custom Data Structures === 
 
-// Node 
-class Node {
+// TextNode 
+class TextNode {
     constructor(data) {
         this.data = data;
-        this.next = null;
+        this.length = data.length;
     }
 }
 
-const node1 = new Node({value: "Text Node 1"});
-const node2 = new Node({value: "Text Node 2"});
-const node3 = new Node({value: "Text Node 3"});
+const node1 = new TextNode("Text Node 1");
+const node2 = new TextNode("Text Node 2");
+const node3 = new TextNode("Text Node 3");
 
-
-node1.next = node2;
-node2.next = node3;
-
-console.log(node1);
-
-// NodeList
-class NodeList  extends Node {
-    list = [];
-    length = this.list.length;
+// no need
+class NodeList {
+    length = 0;
+    
+    constructor(...nodes) {
+        this.list = [...nodes];
+    }
 
     append(node) {
         this.list.push(node);
-    }
-
-    removeLast() {
-        this.list.pop();
-    }
-
-    traverse(fn) {
-        this.list.forEach(node => {
-            fn(node);
-        });
+        this.length = this.list.length;
     }
 }
 
-const myNodeList = new NodeList();
-console.log(myNodeList.length)
+// HTML Element Node
+class HTMLNode {
+    textContent = null;
+    outerHTML = null;
 
-import {LinkedList} from "./linkedlist.js";
+    constructor(name) {
+        this.nodeName = name.toLowerCase();
+        this.tagName = this.nodeName;
+    }
+
+    setTextContent(text) {
+        this.textContent = text;
+        this.outerHTML = this.#setOuterHTML();
+    }
+
+    #setOuterHTML(){
+        return this.outerHTML = `<${this.nodeName}>${this.textContent}</${this.nodeName}>`
+    }
+}
+
+const myHTMLElement = new HTMLNode("div");
+myHTMLElement.setTextContent("Hello World");
+
+console.log(myHTMLElement);
+
+const h1 = document.querySelector("h1");
+console.log(h1);
