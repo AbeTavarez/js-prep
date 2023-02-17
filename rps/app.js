@@ -7,9 +7,9 @@ let computerChoice;
 let result;
 
 function generateComputerChoice() {
-    const randumNumber = Math.floor(Math.random() * possibleChoices.length);
+    const randomNumber = Math.floor(Math.random() * possibleChoices.length);
 
-    switch (randumNumber) {
+    switch (randomNumber) {
         case 0:
             computerChoice = 'rock';
             break;
@@ -26,25 +26,25 @@ function generateComputerChoice() {
 }
 
 function getResults() {
-    if(computerChoice === userChoice) {
+    if (computerChoice === userChoice) {
         result = "It's a tie!";
     }
-    if(computerChoice === "rock" && userChoice === "paper"){
+    if (computerChoice === "rock" && userChoice === "paper"){
         result = "You Win!";
     }
-    if(computerChoice === "rock" && userChoice === "scissors"){
+    if (computerChoice === "rock" && userChoice === "scissors"){
         result = "You Lose!";
     }
-    if(computerChoice === "paper" && userChoice === "scissors"){
+    if (computerChoice === "paper" && userChoice === "scissors"){
         result = "You Win!";
     }
-    if(computerChoice === "paper" && userChoice === "rock"){
+    if (computerChoice === "paper" && userChoice === "rock"){
         result = "You Lose!";
     }
-    if(computerChoice === "scissors" && userChoice === "rock"){
+    if (computerChoice === "scissors" && userChoice === "rock"){
         result = "You Win!";
     }
-    if(computerChoice === "scissors" && userChoice === "paper"){
+    if (computerChoice === "scissors" && userChoice === "paper"){
         result = "You Lose!";
     }
     resultDisplay.innerHTML = result;
